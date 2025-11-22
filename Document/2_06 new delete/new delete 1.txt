@@ -1,0 +1,311 @@
+https://jhnyang.tistory.com/334
+
+new에 대해서 알아보자
+C++에서 동적할당을 하기 위한 연산자 키워드로 new를 사용합니다.
+
+new와 delete 뭐야?
+new    : HEAP에 메모리를 만들고 그 주소를 리턴해줄게~!
+delete : 내가 가리키는 주소의 메모리를 해제해줘!
+
+[new 기본 사용법]
+
+	포인터타입 변수명 = new 타입;
+ 	int* ptr = new int;
+	delete ptr;
+
+new는 주소를 리턴해주기 때문에 new의 값을 저장하는 변수는 포인터변수여야 합니다.
+new 옆에는 힙에 할당할 메모리 크기에 해당하는 타입을 적어줍니다.
+간단하죠?
+-----------------------------------------------------------------------------------------------------------
+HEAP에 타입별로 메모리를 할당하고, 
+HEAP메모리 위치와, 거기에 저장된 값, 그리고 얼만큼의 크기를 할당했는지 크기도 같이 출력해봅시다.
+
+#include <iostream>
+using std::cout;
+using std::endl;
+int main()
+{	
+	char* pchar = new char; //1바이트만큼 heap에 공간 할당
+	*pchar = 'a';
+	cout << "메모리주소 :" << (void*) pchar << "\t값 :" << *pchar << endl;      //void*로 형변환
+	cout << "heap 크기: " << sizeof(*pchar) << endl;
+	delete pchar;
+	
+	int* pnum = new int; //4바이트만큼 heap에 공간 할당
+	*pnum = 3;
+	cout << "메모리주소 :" << pnum << "\t값 :" << *pnum << endl;
+	cout << "heap 크기: " << sizeof(*pnum) << endl;
+	delete pnum;
+	
+	float* pfloat = new float;  //4바이트만큼 heap에 공간 할당
+	*pfloat = 3.14;
+	cout << "메모리주소 :" << pfloat << "\t값 :" << *pfloat << endl;
+	cout << "heap 크기: " << sizeof(*pfloat) << endl;
+	delete pfloat;
+	
+	double* pdouble{new double};  //8바이트만큼 heap에 공간 할당
+	*pdouble = 3.141592;
+	cout << "메모리주소 :" << pdouble << "\t값 :" << *pdouble << endl;
+	cout << "heap 크기: " << sizeof(*pdouble) << endl;
+	delete pdouble;
+	return 0;
+}
+
+첫 번째 char에서는 왜 앞에 void*로 형변환을 해줬을까요?
+
+char배열이 문자열이기 때문에 문자열의 시작주소를 가리키는 char*를 출력하였을 경우, 
+std::cout 자체에 문자열을 보여주도록 기능 구현이 되어있기 때문이예요. 
+따라서 특별하게 포인터변수가 담고 있는 주소값이 보고 싶을 경우 void* 로 형변환을 해주는 거랍니다. 
+
+
+결과값
+결과가 잘 출력된 것을 확인할 수 있어요. 우리가 사용하는 new는 함수가 아니라, 연산자입니다!!
+
+ -----------------------------------------------------------------------------------------------------------
+다시 복습하자면 'int* pnum = new int;'의 경우
+
+	HEAP     4바이트 크기 확보
+	STACK   pnum 에 힙을 가르키는 주소 할당
+	
+-----------------------------------------------------------------------------------------------------------
+ [new와 배열]
+
+이번에는 다양한 방법으로 heap에 배열을 할당해볼게요.
+
+#include <iostream>
+using std::cout;
+using std::endl;
+int main()
+{
+	int* pnum = new int[2];
+	delete[] pnum;  //배열의 경우에는 이렇게 대괄호를 표시해 전체를 해제해줘야해요.
+
+	int num = 3;
+	float* pfloat = nullptr;
+	pfloat = new float[num];
+	for (int i = 0; i < num; i++) {
+		pfloat[i] = i + 1.1;
+		cout << "pfloat[" << i << "] :" << pfloat[i] << " ";
+	}
+	cout << endl;
+	delete[] pfloat;
+
+	double* pdouble{new double[5]};
+	delete[] pdouble;
+
+	return 0;
+}
+
+출력은 두 번째 pfloat만 해줬어요.
+
+조심해야 할 것은 위와 같이 할당하는 건 동적으로 할당된 배열이지 동적 배열이 아닙니다.
+동적 배열은 말그대로 배열의 길이가 동적으로 늘었다 줄었다 하는 것을 말하고,
+우리가 수행한건 런타임시 배열의 크기를 정해 HEAP공간에다가 배열을 할당한 것이니까 엄연히 달라요~!
+스택에 할당한 것처럼 변경이 되는 것은 아니다. 
+
+배열을 해제시에는 delete[]를 사용합니다. 
+delete만 사용했을 경우 배열의 첫 번째 원소에 해당하는 메모리만 해지되고 그 뒤에 메모리는 해지가 되지 않습니다. 
+그러면 이후 메모리에 접근할 방법이 없어 메모리 누수가 일어나니 주의해주세요.
+
+★ 배열을 힙에 할당하면 런타임시 크기를 정할 수 있는장점이 있다.
+★ new로 heap 메모리에 배열을 할당하면 이는 동적으로 할당된 배열이지, 동적배열이 아니다.
+
+-----------------------------------------------------------------------------------------------------------
+[new하면서 초기화하기]
+
+new는 초기화가 가능하다.
+
+#include <iostream>
+using std::cout;
+using std::endl;
+int main()
+{
+	int* pnum = new int(10);
+	cout << "*pnum:\t\t" << *pnum << endl;
+	delete pnum;
+
+	float* pfloat = new float(75.25);
+	cout << "*pfloat:\t" << *pfloat << endl;
+	delete pfloat;
+
+	int* pary1 = new int[3]{}; //0으로 초기화 
+	cout << "pary1[0]:\t" << pary1[0] << endl;
+	delete pary1;
+
+	int* pary2{ new int[3] {} }; //0으로 초기화
+	delete[] pary2;
+
+	char* pary3 = new char[20]{ "Hello World!" };
+	cout << "pary3:\t\t" << pary3 << endl;
+	delete[] pary3;
+
+	int* pary4{ new int[5]{ 1, 2, 3, 4, 5 } };
+	delete[] pary4;
+
+	int num = 6;
+	auto* pary5{ new float[num]{ 1.1, 2.2, 3.1, 4.1 } };
+	for (int i = 0; i < num; i++)
+		cout << "pary5[" << i << "]:\t" << pary5[i] << "  ";
+	cout << endl;
+	delete[] pary5;
+}
+
+쉽게 연습하시라고 여러 초기화 방법으로 나열해봤습니다. 
+new는 객체초기화에서 사용되던 초기화리스트 방법을
+일반 타입에서도 지원하도록 구현되어 있어요. 따라서 위 방법이 가능한것~! 
+
+결과자 잘 나오네요~! 초기화리스트를 사용했을 경우, 값을 대입해주지 않은 영역은 0으로 초기화됨을 확인할 수 있습니다.
+
+★ new는 초기화리스트를 사용해 초기화가 가능하다.
+
+ 
+-----------------------------------------------------------------------------------------------------------
+[리턴 값은 bad_alloc이다]
+
+new는 malloc과는 다르게 bad_alloc이라는 익셉션을 리턴해줍니다. 익셉션이니까 당연히 try catch 구문을 써줘야겠죠?
+
+#include <iostream>
+int main() {
+    try
+    {
+        int* pary = new int[3];
+    }
+    catch (std::bad_alloc & ba)
+    {
+        std::cerr << "bad_alloc이 발생했습니다: " << ba.what() << '\n';
+    }
+    return 0;
+}
+에러 발생하는 걸 야기시키고 싶었는데 비주얼스튜디오 컴파일러의 경우, 배열의 크기를 음수로 지정하거나 너무 크게 지정하면 이미 다 컴파일 시점에서 잡아주네요 ㅎㅎ
+
+리눅스에서 테스트해보면 될 듯?
+
+★ new는 메모리 할당 실패시 익셉션 bad_alloc을 리턴한다.
+
+ 
+-----------------------------------------------------------------------------------------------------------
+[리턴 값을 malloc처럼 널포인터로 하고 싶을 때]
+
+#include <iostream>
+using namespace std;
+int main()
+{
+	int* pnum = new(nothrow) int;
+	if (pnum == nullptr)
+		cout << "메모리 할당 실패!\n";
+}
+nothrow를 사용하면 익셉션(bad_alloc)대신 nullptr를 리턴해줍니다. 
+
+ 
+-----------------------------------------------------------------------------------------------------------
+[new는 객체를 생성한다]
+
+new는 HEAP에다가 공간을 할당할뿐만 아니라, 클래스의 경우 객체를 생성해줍니다.
+
+#include <iostream>
+class Test
+{
+public:
+	Test()
+	{
+		std::cout << "Test 생성자 호출됨!\n";
+	}
+};
+int main()
+{
+	Test* ptest = new Test;
+	delete ptest;
+	return 0;
+}
+생성자가 호출됐다는건, 객체가 만들어졌다는 뜻이잖아요 ㅎㅎ
+
+이렇게 테스트를 해보면 알 수 있어요.
+
+
+짠 잘 호출되었죠?
+
+★ new는 메모리를 할당할 뿐만 아니라 객체를 생성한다.
+
+ 
+-----------------------------------------------------------------------------------------------------------
+[new로 객체 초기화하기]
+
+물론 new는 초기화리스트를 이용해 객체도 초기화할 수 있습니다.
+
+#include <iostream>
+using std::cout;
+using std::endl;
+class Test
+{
+	int num1;
+public:
+	Test() : num1(3)
+	{
+		cout << "Test 생성자 호출됨 num1:\t" << num1 << endl;
+	}
+	Test(int num1) : num1(num1)
+	{
+		cout << "Test 생성자 호출됨 num1:\t" << num1 << endl;;
+	}
+};
+int main()
+{
+	Test* ptest1 = new Test;
+	Test* ptest2 = new Test(10);
+	delete ptest1;
+	delete ptest2;
+	return 0;
+}
+멤버변수 하나를 만들어, 기본생성자에서 기본값을 정해주고, 객체초기화리스트를 이용해 값이 들어왔을 경우 그 값이 저장되게 해줬어요.
+
+
+num1이 초기화된 것을 확인할 수 있습니다.
+
+-----------------------------------------------------------------------------------------------------------
+[new로 2차원 배열을 할당해보자]
+
+먼저, 열에 해당하는 부분이 컴파일 타임 상수라면, 아래와 같이 작성하시면 됩니다.
+
+1. int** p2dAry = new int[10][5];  //컴파일 안됨!
+2. int (*p2dAry)[5] = new int [10][5];  //OK
+3. auto p2dAry = new int[10][5];	//OK
+주의해야할 점은 1번 처럼 int** p2dAry = new int[10][5]; 이런 방식을 안됩니다.
+
+2번처럼 배열포인터 방식을 사용해서 할당해주면 됩니다. 하지만,, 이게 너무 귀찮으면 auto 키워드를 사용하는 것도 하나의 방법이겠죠??
+ 
+
+만약에 런타임시, 열 개수 같은 것들을 실시간으로 얻고 싶으면 아래와 같이 사용해야 합니다.
+
+#include <iostream>
+using namespace std;
+int main()
+{
+	int rows = 3;
+	int** table = nullptr;
+	table = new int* [rows];
+	table[0] = new int[4]{1,2,3,4};
+	table[1] = new int[3]{10,20,30};
+	table[2] = new int[1]{};
+
+	for (int row = 0; row < rows; row++)
+		delete[] table[row];
+	delete[] table;
+	return 0;
+}
+어떤 방법이던 2차원 배열 할당시 주의해야 할 점은 메모리 해제하는 것,
+꼭 반복문으로 각각 row가 갖고 있는 col에 해당하는 배열들을 해제시키고,
+row배열을 해제해줘야 해요. 
+
+-----------------------------------------------------------------------------------------------------------
+new 연산자 특징 정리
+
+★ new는 함수가 아니라, 동적할당 연산자이다.
+★ new 뒤에는 자료형이 붙는다. 
+★ 연산자이기 때문에 malloc보다 빠른 특징이 있다.
+★ 메모리를 new로 할당하였으면 delete를 이용해서 꼭 해제시켜줘야 메모리 누수가 발생하지 않는다.
+★ 배열을 힙에 할당하면 런타임시 크기를 정할 수 있는장점이 있다.
+★ new로 heap 메모리에 배열을 할당하면 이는 동적으로 할당된 배열이지, 동적배열이 아니다.
+★ new는 초기화리스트를 사용해 초기화가 가능하다.
+★ new는 메모리를 할당할 뿐만 아니라 객체를 생성한다.
+★ new는 메모리 할당 실패시 익셉션 bad_alloc을 리턴한다.
+★ new는 객체를 생성할 때 초기화리스트를 사용하여 객체를 초기화 시킬 수 있다.

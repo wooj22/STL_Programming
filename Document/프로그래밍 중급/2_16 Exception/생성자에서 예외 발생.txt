@@ -1,0 +1,141 @@
+[c++] 생성자에서 예외가 발생하면 어떻게 될까
+
+R.A.I.I.를 사용하다 보면, 생성자에서 복잡한 일을 해야 할 경우가 종종 생긴다. 
+복잡한 일은 실패할 수도 있고, 그 경우 예외가 발생하기도 한다. 
+여기서 궁금한 점이 생긴다. 생성자에서 예외가 던져져도 아무 문제 없을까?
+
+
+#include <cstdio>
+
+class A {
+public:
+  A() {    printf("%s\n", __PRETTY_FUNCTION__);  }
+  virtual ~A() {    printf("%s\n", __PRETTY_FUNCTION__);  }
+};
+class B {
+public:
+  B() {    printf("%s\n", __PRETTY_FUNCTION__);  }
+  ~B() {    printf("%s\n", __PRETTY_FUNCTION__);  }
+};
+class C {
+public:
+  C() {    printf("%s\n", __PRETTY_FUNCTION__);    throw 0;  }
+  ~C() {    printf("%s\n", __PRETTY_FUNCTION__);  }
+};
+class D {
+public:
+  D() {    printf("%s\n", __PRETTY_FUNCTION__);  }
+  ~D() {    printf("%s\n", __PRETTY_FUNCTION__);  }
+};
+class E: public A {
+public:
+  E() : A(), b(), c(), d() {    printf("%s\n", __PRETTY_FUNCTION__);  }
+  ~E() {    printf("%s\n", __PRETTY_FUNCTION__);  }
+private:
+  B b;
+  C c;
+  D d;
+};
+
+int main(void) {
+  try {
+    E e;
+  } catch (...) {
+  }
+  return 0;
+}
+view rawconstructor.cpp hosted with ❤ by GitHub
+
+ 우선 걱정되는 것은 메모리 릭이다. 
+하지만 다행히도 메모리 릭은 발생하지 않는다. 
+스택에 생성된 변수는 스택 unwind를 통해 메모리가 해제되며, 
+new operator를 통해 힙에 할당하다 예외가 발생한 경우에도 new operator가 알아서 메모리를 해제하고 nullptr를 리턴해준다.
+
+ 그다음으로 걱정되는 것은 멤버 변수의 소멸자가 잘못 불리지 않을까 하는 것이다. 
+하지만 이 역시 문제없다. 
+예외가 발생한 시점에서 멤버 변수는 
+
+ 초기화가 완료된 멤버 변수, 초기화 중이었던 멤버 변수, 초기화되지 않은 멤버 변수 3가지로 나눌 수 있다.
+초기화가 완료된 멤버 변수는 말 그대로 생성자가 불렸고 정상적으로 메모리 할당을 완료한 멤버 변수다. 
+위 코드에서는 b에 해당하는데, 이들은 예외가 발생하면 이 변수들은 정상적으로 소멸자가 불리며 리소스를 해제한다.
+
+ 초기화 중이었던 변수는 위 코드에서 c에 해당하는 멤버 변수다. 
+위 코드는 E 클래스의 생성자에서 C인 변수 c의 생성자가 예외를 발생시켰다. 
+이 경우 E 클래스 입장에서 c는 초기화 중인 변수가 된다. 
+위 코드와 같이 멤버 변수의 초기화 중에서 예외가 발생하면 초기화 중인 변수가 1개 존재하지만, 
+생성자의 본체에서 예외가 발생하면 초기화 중인 변수는 존재하지 않는다.
+
+ 마지막으로 초기화되지 않은 변수의 경우 생성자가 불리지 않았으니 소멸자가 불리지 않는다. 
+하지만 이 경우는 아직 생성자가 불리지 않았기 때문에 소멸자가 안 불리는 것이 맞다.
+
+ 상속받는 경우는 어떨까? 
+부모 클래스에서 할당한 리소스는 정상적으로 해제될까? 당연히 이 경우도 아무 문제없다. 
+생성자에서 예외가 발생했을 때, 초기화가 완료 된 멤버 변수의 소멸자가 전부 불리고 나면, 부모 클래스의 소멸자가 불리며 리소스를 해제한다. 
+따라서 위의 코드를 실행시키면 다음과 같은 결과가 나온다.
+
+A::A()
+B::B()
+C::C()
+B::~B()
+virtual A::~A()
+view rawconstructor.txt hosted with ❤ by GitHub
+
+
+ 다시 처음 질문으로 돌아가 보자. 생성자에서 예외를 발생시키는 것은 아무 문제 없을까?
+
+ 위에서 보았듯이 아무런 문제도 없다...... 라고 말하고 싶지만, 사실 여기는 한 가지 가정이 필요하다. 
+클래스가 잘 설계되었다는 가정 하에서 생성자에서 예외가 던져져도 아무런 문제도 없다.
+
+ 그렇다면 잘 설계되지 않은 클래스는 무엇이고, 이 경우 어떤 문제가 있을?
+class A {
+  A() {    printf("%s\n", __PRETTY_FUNCTION__);  }
+  ~A() {    printf("%s\n", __PRETTY_FUNCTION__);  }
+};
+
+class B {
+  B() : a(new A) {    throw 0;    printf("%s\n", __PRETTY_FUNCTION__);  }
+  ~B() {    delete a;    printf("%s\n", __PRETTY_FUNCTION__);  }
+private:
+  A* a;
+};
+
+int main(void) {
+  try {
+    B b;
+  } catch (...) {
+  }
+  return 0;
+}
+view rawconstructor_leak.cpp hosted with ❤ by GitHub
+
+ 위의 코드를 보자. B의 생성자에서 A를 힙에 할당하고, 소멸자에서 명시적으로 delete를 호출하여 해제한다. 
+
+ 생성자에서 예외가 발생하지 않는다면 이 코드는 문제없다. 
+B가 할당될 때 예외가 발생하면, A가 할당되며, B가 소멸할 때, A가 소멸한다.
+
+ 하지만 B의 생성자에서 예외가 발생하면 문제가 된다. 
+B의 멤버 변수들을 정리할 때 a는 단순히 A의 포인터이기 때문의 A의 소멸자가 불리지 않는다. 
+또한, B가 초기화되지 않았기 때문에 B의 소멸자가 불릴 일도 없고 a는 메모리 릭이 된다. 
+이것을 막기 위해서는 아래와 같이 A의 라이프 타임을 B와 일치시켜야 한다.
+
+#include <memory>
+
+class A {
+  A() {    printf("%s\n", __PRETTY_FUNCTION__);  }
+  ~A() {    printf("%s\n", __PRETTY_FUNCTION__);  }
+};
+
+class B {
+  B() : a(new A) {    throw 0;    printf("%s\n", __PRETTY_FUNCTION__);  }
+  ~B() {    printf("%s\n", __PRETTY_FUNCTION__);  }
+private:
+  std::unique_ptr<A> a;
+};
+
+int main(void) {
+  try {
+    B b;
+  } catch (...) {
+  }
+  return 0;
+}

@@ -1,0 +1,153 @@
+1. 소인수 분해
+
+void prime_factor(int a) {
+	cout << a << "의 소인수 분해 : ";
+	for (int i = 2; i <= a; i++) {
+		while (a % i == 0) {
+			a /= i;
+			cout << i << " ";
+		}
+	}
+}
+
+
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+int main() {
+		
+	int n;
+	cin >> n;
+
+	//소인수 분해
+	while (n != 1) {
+		for (int i = 2; i <= n; i++) {
+			if (n % i == 0) {
+				n /= i;
+				cout << i << ' ';
+				break;
+			}
+		}
+	}
+/*
+	//약수 구하기 1
+
+	for (int i = 1; i <= n; i++)
+		if (n % i == 0)
+			printf("%d ", i);
+
+	//약수 구하기 2
+
+	int i = 0;
+	for (i = 1; i * i < n; i++)
+	{
+		if (n % i == 0)
+			printf("%d %d ", i, n / i);
+	}
+	if (i * i == n)          //제곱수 확인
+		printf("%d ", i);
+
+*/
+
+}
+
+
+ex.1)약수의 합 구하기
+
+#include <stdio.h>
+
+int main(){
+
+    int i,n,s=0;
+
+    scanf("%d",&n);
+
+    for(i=1;i*i<n;i++){
+        if(n%i==0){
+            s+=i;
+            s+=n/i;
+        }
+    }
+
+    if(i*i==n)
+        s+=i;
+
+    printf("%d",s);
+
+    return 0;
+}
+
+ex.2)약수의 곱 구하기
+
+#include <stdio.h>
+
+int main(){
+
+    int i,n,s=1;
+
+    scanf("%d",&n);
+
+    for(i=1;i*i<n;i++)
+        if(n%i==0)
+            s*=n;
+
+
+
+    if(i*i==n)
+        s*=i;
+
+    printf("%d",s);
+
+    return 0;
+}
+ex.3)약수의 개수 구하기
+
+#include <stdio.h>
+
+int main(){
+
+    int i,n,cnt=0;
+
+    scanf("%d",&n);
+
+    for(i=1;i*i<n;i++)
+        if(n%i==0)
+            cnt+=2;
+
+
+
+    if(i*i==n)
+        cnt++;
+
+    printf("%d",cnt);
+
+    return 0;
+}
+
+
+1. 최대 공약수
+
+int gcd(int a, int b) {
+	if (a % b == 0) {
+		return b;
+	}
+	else {
+		return gcd(b, a % b);
+	}
+}
+
+int gcd2(int a, int b) {
+	while (b != 0) {
+		int temp = a % b;
+		a = b;
+		b = temp;
+	}
+	return a;
+}
+
+2. 최소 공배수 - 간단하게 서로를 곱한 것에 최대 공약수를 나눠주면 된다.
+
+int lcm(int a, int b) {
+	return a * b / gcd(a, b);
+}

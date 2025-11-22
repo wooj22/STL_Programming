@@ -1,0 +1,21 @@
+#include <iostream>
+using namespace std;
+
+template<typename T>
+struct Add {
+    T operator()(T a, T b) { return a + b; }
+};
+
+template<typename T, typename Fn = Add<T> >
+void PrintSum(T a, T b)
+{
+    Fn add;
+    cout << add(a, b) << endl;
+}
+
+
+int main()
+{
+    PrintSum(1, 2 );          //3    - int
+    PrintSum(1.2, 2.3);       //3.5  - double
+}

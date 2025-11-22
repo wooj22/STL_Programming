@@ -1,0 +1,35 @@
+
+템플릿을 위한 새로운 이름
+C++11부터는 typedef 키워드를 이용하여 템플릿 특수화를 위한 새로운 이름을 선언할 수 있습니다.
+
+예제
+    typedef X<double, 3.14> DoubleX;
+    DoubleX double_x;               // DoubleX 는 X<double, 3.14> 타입임.
+
+-------------------------------------------------------------------------------------------------------------
+using 사용하기 
+
+기본 타입 alias
+
+    // C++ 11 // 중간의 "="가 delimeter 역할을 해주어 가독성 증가
+    using fmtfl = std::ios_base::fmtflags;      
+    using UserMap = std::unordered_map<int, std::string >> ;
+
+    // C++ 03
+    typedef std::ios_base::fmtflags fmtfl;
+    typedef std::unordered_map<int, std::string >> UserMap;
+
+함수 포인터 alias
+
+    // C++ 11  
+    using func = void(*)(int);
+
+    // C++ 03
+    typedef void (*func)(int);
+
+템플릿 alias
+
+    template<typename T>
+    using add_const_t = typename std::add_const<T>::type;
+
+*/
