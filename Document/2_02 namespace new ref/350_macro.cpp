@@ -7,21 +7,21 @@
 //	복잡하거나 반복되는 작업을 단순화하거나 자동화하기 위한 목적으로 주로 이용
 //	ex) 자주 사용하는 여러 개의 명령어를 묶어서 하나의 키 입력 동작으로 만듬
 
-#include<iostream> 
-using namespace std;
+//#include<iostream> 
+//using namespace std;
+//
+//#define NAME "홍길동"
+//#define AGE 24
+//#define PRINT cout << "address" <<endl;
+//
+//int main(void)
+//{
+//	cout << NAME << endl;
+//	cout << AGE << endl;
+//	PRINT;
+//}
 
-#define NAME "홍길동"
-#define AGE 24
-#define PRINT cout << "address" <<endl;
 
-int main(void)
-{
-	cout << NAME << endl;
-	cout << AGE << endl;
-	PRINT;
-}
-
-/*
 
 #include <stdio.h>
 #define  DIFF_ABS(X, Y)     ( (x)>(y) ? (x)-(y) : (y)-(x) ) //명확하게 선언하자
@@ -112,4 +112,3 @@ int main(void)
 //"#define MAX 10" 보다는 "const int MAX 10"으로 코딩하는 것이 바람직하다.
 //매크로함수보다는 인라인 함수 활용하라.
 
-*/

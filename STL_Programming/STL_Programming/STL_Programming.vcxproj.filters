@@ -13,5 +13,31 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="C++">
+      <UniqueIdentifier>{c45ab196-56a7-48f9-b287-c91dc087a27b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="STL">
+      <UniqueIdentifier>{7ea1e72e-75d0-4db7-a169-d19acbafcc3d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="C++\00. namespace">
+      <UniqueIdentifier>{a3b208a2-1c87-442a-8f72-6deb839e3064}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="C++\01. macro %28define%29">
+      <UniqueIdentifier>{8630108e-9285-48c6-89d0-8049ac43cb67}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="01_namespace.cpp">
+      <Filter>C++\00. namespace</Filter>
+    </ClCompile>
+    <ClCompile Include="02_namespace.cpp">
+      <Filter>C++\00. namespace</Filter>
+    </ClCompile>
+    <ClCompile Include="03_using.cpp">
+      <Filter>C++\00. namespace</Filter>
+    </ClCompile>
+    <ClCompile Include="macro.cpp">
+      <Filter>C++\01. macro %28define%29</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
