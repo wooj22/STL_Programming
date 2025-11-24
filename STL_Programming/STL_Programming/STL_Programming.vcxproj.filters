@@ -34,6 +34,12 @@
     <Filter Include="C++\04. ref">
       <UniqueIdentifier>{e18acc02-ec8b-4047-915b-0fbad1cc54e4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="C++\05. class">
+      <UniqueIdentifier>{c2475633-3c88-4ff3-a781-7b48476a30b5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="C++\06. RAII">
+      <UniqueIdentifier>{a4c2dbd6-55ea-4f24-8ab4-6bdc1ea2e4b2}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="01_namespace.cpp">
@@ -86,6 +92,30 @@
     </ClCompile>
     <ClCompile Include="05_ref_dangling.cpp">
       <Filter>C++\04. ref</Filter>
+    </ClCompile>
+    <ClCompile Include="01_class.cpp">
+      <Filter>C++\05. class</Filter>
+    </ClCompile>
+    <ClCompile Include="02_Inheritance.cpp">
+      <Filter>C++\05. class</Filter>
+    </ClCompile>
+    <ClCompile Include="03_memberInit.cpp">
+      <Filter>C++\05. class</Filter>
+    </ClCompile>
+    <ClCompile Include="04_referenceMember.cpp">
+      <Filter>C++\05. class</Filter>
+    </ClCompile>
+    <ClCompile Include="01_shallow_copy.cpp">
+      <Filter>C++\06. RAII</Filter>
+    </ClCompile>
+    <ClCompile Include="02_deep_copy.cpp">
+      <Filter>C++\06. RAII</Filter>
+    </ClCompile>
+    <ClCompile Include="03_RAII.cpp">
+      <Filter>C++\06. RAII</Filter>
+    </ClCompile>
+    <ClCompile Include="05_specialMember.cpp">
+      <Filter>C++\05. class</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
