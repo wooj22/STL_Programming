@@ -25,6 +25,15 @@
     <Filter Include="C++\01. macro %28define%29">
       <UniqueIdentifier>{8630108e-9285-48c6-89d0-8049ac43cb67}</UniqueIdentifier>
     </Filter>
+    <Filter Include="C++\02. inline">
+      <UniqueIdentifier>{8c21e7c7-df97-4bd2-bd74-ffd5a4ac4c17}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="C++\03. new">
+      <UniqueIdentifier>{1fde9c2a-baa8-47d2-bf24-1730eff0f314}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="C++\04. ref">
+      <UniqueIdentifier>{e18acc02-ec8b-4047-915b-0fbad1cc54e4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="01_namespace.cpp">
@@ -39,5 +48,49 @@
     <ClCompile Include="macro.cpp">
       <Filter>C++\01. macro %28define%29</Filter>
     </ClCompile>
+    <ClCompile Include="01_inline.cpp">
+      <Filter>C++\02. inline</Filter>
+    </ClCompile>
+    <ClCompile Include="02_inline.cpp">
+      <Filter>C++\02. inline</Filter>
+    </ClCompile>
+    <ClCompile Include="02_new.cpp">
+      <Filter>C++\03. new</Filter>
+    </ClCompile>
+    <ClCompile Include="01_malloc.cpp">
+      <Filter>C++\03. new</Filter>
+    </ClCompile>
+    <ClCompile Include="03_new\03_new_delete.cpp">
+      <Filter>C++\03. new</Filter>
+    </ClCompile>
+    <ClCompile Include="04_new_struct.cpp">
+      <Filter>C++\03. new</Filter>
+    </ClCompile>
+    <ClCompile Include="05_new_class.cpp">
+      <Filter>C++\03. new</Filter>
+    </ClCompile>
+    <ClCompile Include="new_array.cpp">
+      <Filter>C++\03. new</Filter>
+    </ClCompile>
+    <ClCompile Include="01_ref.cpp">
+      <Filter>C++\04. ref</Filter>
+    </ClCompile>
+    <ClCompile Include="02_ref_arr.cpp">
+      <Filter>C++\04. ref</Filter>
+    </ClCompile>
+    <ClCompile Include="03_ref_pointer.cpp">
+      <Filter>C++\04. ref</Filter>
+    </ClCompile>
+    <ClCompile Include="04_ref_function.cpp">
+      <Filter>C++\04. ref</Filter>
+    </ClCompile>
+    <ClCompile Include="05_ref_dangling.cpp">
+      <Filter>C++\04. ref</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="01_inline.h">
+      <Filter>C++\02. inline</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
