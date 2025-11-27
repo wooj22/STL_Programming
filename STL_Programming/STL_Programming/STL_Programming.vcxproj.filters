@@ -156,6 +156,18 @@
     <ClCompile Include="05_const_object.cpp">
       <Filter>C++\10. const</Filter>
     </ClCompile>
+    <ClCompile Include="06_mutable.cpp">
+      <Filter>C++\10. const</Filter>
+    </ClCompile>
+    <ClCompile Include="01_static.cpp">
+      <Filter>C++\09. static</Filter>
+    </ClCompile>
+    <ClCompile Include="02_static_member.cpp">
+      <Filter>C++\09. static</Filter>
+    </ClCompile>
+    <ClCompile Include="03_const_static_member.cpp">
+      <Filter>C++\09. static</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="01_inline.h">
