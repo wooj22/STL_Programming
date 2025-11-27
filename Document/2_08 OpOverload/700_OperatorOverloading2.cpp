@@ -3,7 +3,7 @@
 #include <iostream>
 using namespace std;
 
-class MyClass
+class Num
 {
 	int num = 0;
 public:
@@ -19,8 +19,8 @@ public:
 
 int main(void)
 {
-	MyClass x; x.Set(1);
-	MyClass y;
+	Num x; x.Set(1);
+	Num y;
 
 	//아래 코드처럼 사용가능하도록 연산자를 추가해 봅시다.
 
@@ -34,29 +34,29 @@ int main(void)
 }
 
 // 연산자 오버로딩 + -
-MyClass MyClass::operator+(MyClass rightHand)
+Num Num::operator+(Num rightHand)
 {
-	MyClass res;
+	Num res;
 	res.num = this->num + rightHand.num;
 	return res;
 }
-MyClass MyClass::operator-(const MyClass& rightHand) const
+Num Num::operator-(const Num& rightHand) const
 {
-	MyClass res;
+	Num res;
 	res.num = this->num - rightHand.num;
 	return res;
 }
 
 // 연산자 오버로딩 - 음수
-MyClass MyClass::operator-() const
+Num Num::operator-() const
 {
-	MyClass res;
+	Num res;
 	res.num = -num;
 	return res;
 }
 
 // 연산자 오버로딩 <<  //맴버가 아닌 일반함수로 구현
-ostream& operator<<(ostream& os, const MyClass& obj)
+ostream& operator<<(ostream& os, const Num& obj)
 {
 	os << obj.num;
 	return os;

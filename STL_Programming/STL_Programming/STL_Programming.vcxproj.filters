@@ -168,6 +168,30 @@
     <ClCompile Include="03_const_static_member.cpp">
       <Filter>C++\09. static</Filter>
     </ClCompile>
+    <ClCompile Include="01_friend.cpp">
+      <Filter>C++\08. friend</Filter>
+    </ClCompile>
+    <ClCompile Include="01_operator.cpp">
+      <Filter>C++\07. operator overloading</Filter>
+    </ClCompile>
+    <ClCompile Include="02_operator_calculation.cpp">
+      <Filter>C++\07. operator overloading</Filter>
+    </ClCompile>
+    <ClCompile Include="03_operator_cout.cpp">
+      <Filter>C++\07. operator overloading</Filter>
+    </ClCompile>
+    <ClCompile Include="04_operator_array.cpp">
+      <Filter>C++\07. operator overloading</Filter>
+    </ClCompile>
+    <ClCompile Include="05_operator_pointer.cpp">
+      <Filter>C++\07. operator overloading</Filter>
+    </ClCompile>
+    <ClCompile Include="06_functor.cpp">
+      <Filter>C++\07. operator overloading</Filter>
+    </ClCompile>
+    <ClCompile Include="07_functor_sort.cpp">
+      <Filter>C++\07. operator overloading</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="01_inline.h">

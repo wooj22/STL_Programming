@@ -7,7 +7,7 @@
 
 #include <iostream>
 
-class MyClass
+class Num
 {
 public:
 	mutable int data = 0;				// mutable
@@ -17,7 +17,7 @@ public:
 int main()
 {
 	// 상수객체에서 mutalbe 변수 변경
-	const MyClass my;
+	const Num my;
 	my.data = 20;			
 	my.Add();
 }

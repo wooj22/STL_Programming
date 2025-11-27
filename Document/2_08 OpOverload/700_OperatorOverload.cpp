@@ -34,36 +34,36 @@
 #include<iostream> 
 using namespace std;
 
-class MyClass
+class Num
 {
 	int num;
 public:
-	MyClass(int x = 0) : num(x) { }
+	Num(int x = 0) : num(x) { }
 	void Show() { cout << num << endl; }
 
 	//1. 맴버함수 // operator+라는 이름의 함수 //연산자 재정의
-	MyClass operator+(const MyClass& ref)
+	Num operator+(const Num& ref)
 	{
-		MyClass pos(num + ref.num);
+		Num pos(num + ref.num);
 		return pos;
 	}
 
-	friend MyClass operator+(const MyClass& obj1, const MyClass& obj2);
+	friend Num operator+(const Num& obj1, const Num& obj2);
 };
 
 //2. 전역함수 // private 맴버를 사용한다면 friend 선언 필요
-MyClass operator+(const MyClass& obj1, const MyClass& obj2)
+Num operator+(const Num& obj1, const Num& obj2)
 {
-	MyClass pos(obj1.num + obj2.num);
+	Num pos(obj1.num + obj2.num);
 	return pos;
 }
 
 int main()
 {
-	MyClass a(1); a.Show();
-	MyClass b(2); b.Show();
+	Num a(1); a.Show();
+	Num b(2); b.Show();
 
-	MyClass c = a + b; c.Show();			// MyClass 객체에 대하여 + 연산하기
+	Num c = a + b; c.Show();			// MyClass 객체에 대하여 + 연산하기
 
 	//MyClass c = a.operator+(b);			//1. 맴버함수  //인스턴스가 첫번째 피연산자
 
@@ -71,7 +71,7 @@ int main()
 
 
 	//아래 코드는?
-	MyClass d = a + 5; d.Show();			// 5 -> MyClass(5) , 암시적 형변환
+	Num d = a + 5; d.Show();			// 5 -> MyClass(5) , 암시적 형변환
 	//MyClass d = a.operator+(5);
 }
 

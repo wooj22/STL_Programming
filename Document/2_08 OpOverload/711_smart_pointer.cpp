@@ -4,15 +4,15 @@
 #include <iostream>
 using namespace std;
 
-class IntPtr
+class Position_Pointer
 {
 private:
 	int* ptr;
 public:
-	IntPtr(int* ptr) : ptr(ptr)		//new 할당된 ptr 을 받음
+	Position_Pointer(int* ptr) : ptr(ptr)		//new 할당된 ptr 을 받음
 	{
 	}
-	~IntPtr()
+	~Position_Pointer()
 	{
 		delete ptr;					//알아서 자동으로 소멸 //RAII
 	}
@@ -30,7 +30,7 @@ public:
 
 int main()
 {
-	IntPtr sptr(new int(1));  //선언할때 생성하면 사라질때 자동 소멸
+	Position_Pointer sptr(new int(1));  //선언할때 생성하면 사라질때 자동 소멸
 
 	cout << *sptr << endl;		//객체를 포인터처럼 사용
 	*sptr = 10;

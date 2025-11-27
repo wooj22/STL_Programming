@@ -14,7 +14,7 @@
 #include <iostream>
 using namespace std;
 
-class MyClass
+class Num
 {
 public:
 	int num1;
@@ -22,7 +22,7 @@ public:
 	// 반드시 초기화리스트를 통해 초기화해야한다.
 	const int num2 = 0;	
 
-	MyClass(int n1, int n2) : num1(n1), num2(n2) {}
+	Num(int n1, int n2) : num1(n1), num2(n2) {}
 
 	// const 멤버 함수
 	// : 멤버변수의 변경 금지
@@ -46,6 +46,6 @@ public:
 
 int main()
 {
-	MyClass my(1,2);
+	Num my(1,2);
 	my.Show();
 }

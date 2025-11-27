@@ -11,13 +11,13 @@
 using std::cout;
 using std::endl;
 
-class MyClass
+class Num
 {
 private:
 	int num;
 
 public:
-	MyClass(int num)
+	Num(int num)
 	{
 		this->num = num;
 	}
@@ -28,13 +28,13 @@ public:
 	}
 
 	// this return
-	MyClass* GetInstance_Pointer() 
+	Num* GetInstance_Pointer() 
 	{
 		return this;
 	}
 
 	// this return
-	MyClass& GetInstance_Ref()
+	Num& GetInstance_Ref()
 	{
 		return *this;
 	}
@@ -48,12 +48,12 @@ public:
 
 int main()
 {
-	MyClass my(1);
+	Num my(1);
 	my.Show();
 
-	MyClass* ptr = my.GetInstance_Pointer();
+	Num* ptr = my.GetInstance_Pointer();
 	ptr->Show();
 
-	MyClass& ref = my.GetInstance_Ref();
+	Num& ref = my.GetInstance_Ref();
 	ref.Show();
 }

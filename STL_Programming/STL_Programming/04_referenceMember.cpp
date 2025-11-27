@@ -7,21 +7,21 @@
 #include <iostream>
 using namespace std;
 
-class MyClass
+class Num
 {
 public:
 	int& ref;			// rvalue가 오면 댕글링
 	const int& ref_c;	// rvalue도 가능
 
 public:
-	MyClass() = default;
-	MyClass(int r, int cr) : ref(r), ref_c(cr) {}	// 반드시 초기화 리스트로 참조 변수 초기화
+	Num() = default;
+	Num(int r, int cr) : ref(r), ref_c(cr) {}	// 반드시 초기화 리스트로 참조 변수 초기화
 	void Show() { cout << ref << " " << ref_c << endl; }
 };
 
 int main()
 {
 	int a = 10;
-	MyClass my(a, 20);	// 20을 cosnt&로 받아서 수명 연장. ok
+	Num my(a, 20);	// 20을 cosnt&로 받아서 수명 연장. ok
 	my.Show();
 }

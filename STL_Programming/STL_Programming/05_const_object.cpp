@@ -7,7 +7,7 @@
 */
 #include <iostream>
 
-class MyClass
+class Num
 {
 public:
 	int data = 10;
@@ -18,17 +18,17 @@ public:
 int main()
 {
 	// 상수객체
-	const MyClass my;	
+	const Num my;	
 	my.data = 20;			// 변경 불가
 	my.Show();				// Show() const
 
 
 	// 동적 할당시 const 위치에 주의!
 	// 상수 객체
-	const MyClass* myptr1 = new MyClass();
+	const Num* myptr1 = new Num();
 	myptr1->Show();			// Show() const
 
 	// const 포인터 (상수 객체가 아님)
-	MyClass* const myptr2 = new MyClass();
+	Num* const myptr2 = new Num();
 	myptr2->Show();			// "Show() non const
 }

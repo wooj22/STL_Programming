@@ -14,7 +14,7 @@
 #include <iostream>
 using namespace std;
 
-class MyClass {
+class Num {
 private:
 	int value = 0;			// 1
 	const char* text = "";  // 1
@@ -26,8 +26,8 @@ private:
 	const int num = 10;		
 
 public:
-	MyClass() : value(0), text(""), arr{ 1,2,3 } {}	// 2
-	MyClass(int v, const char* t, int a[3]) : value(v), text(t)	// 2
+	Num() : value(0), text(""), arr{ 1,2,3 } {}	// 2
+	Num(int v, const char* t, int a[3]) : value(v), text(t)	// 2
 	{
 		value = v;			// 3
 		text = t;			// 3
@@ -35,7 +35,7 @@ public:
 	}
 
 	// C++ 11이후 {} 초기화로 initializer_list 전달 가능
-	MyClass(int v, const char* t, std::initializer_list<int> list)
+	Num(int v, const char* t, std::initializer_list<int> list)
 		: value(v), text(t)	
 	{
 		int i = 0;
@@ -56,10 +56,10 @@ int main()
 {
 	// C++11 이전
 	int arr[3] = { 1,2,3 };
-	MyClass my1(1, "Hi", arr);
+	Num my1(1, "Hi", arr);
 
 	// C++11 이후 {} 초기화
-	MyClass my2{1, "Hi", { 1,2,3 }};
+	Num my2{1, "Hi", { 1,2,3 }};
 
 
 	// 일반 변수 초기화

@@ -13,7 +13,7 @@
 #include <iostream>
 using namespace std;
 
-class MyClass
+class Num
 {
 	int data = 0;
 
@@ -31,17 +31,17 @@ public:
 };
 
 // 정적 멤버변수는 반드시 클래스 외부에서 초기화 필요
-int MyClass::count = 0;
+int Num::count = 0;
 
 int main()
 {
 	// 객체 없이 이름으로 접근
-	cout << MyClass::count << endl;
-	MyClass::Counting();
+	cout << Num::count << endl;
+	Num::Counting();
 
 	// 객체들끼리 공유
-	MyClass my1;
-	MyClass my2;
+	Num my1;
+	Num my2;
 	cout << my1.count << endl;
 	cout << my2.count << endl;
 }

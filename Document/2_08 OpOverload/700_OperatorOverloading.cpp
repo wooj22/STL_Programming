@@ -52,7 +52,7 @@ int main(void)
 #include <iostream>
 using namespace std;
 
-class MyClass
+class Num
 {
 	int num = 0;					
 public:
@@ -62,11 +62,11 @@ public:
 	//1. 연산자 오버로딩 <<   
 	ostream& operator<<(ostream& os);				// 맴버 함수로 구성할 수가 없다. x << cout 이 되므로. ***
 
-	friend ostream& operator<<(ostream& os, const MyClass& obj);	//friend 함수로 구현
+	friend ostream& operator<<(ostream& os, const Num& obj);	//friend 함수로 구현
 };
 
 //2. 연산자 오버로딩 <<  
-ostream& operator<<(ostream& os, const MyClass& obj)  // 연속적으로 출력하려면 반환값이 ostream&
+ostream& operator<<(ostream& os, const Num& obj)  // 연속적으로 출력하려면 반환값이 ostream&
 {
 	os << obj.num;
 	return os;
@@ -74,7 +74,7 @@ ostream& operator<<(ostream& os, const MyClass& obj)  // 연속적으로 출력�
 
 int main(void) 
 {
-	MyClass x; MyClass y; x.Set(1);
+	Num x; Num y; x.Set(1);
 
 	cout << x;			// operator<<(cout, x);
 
