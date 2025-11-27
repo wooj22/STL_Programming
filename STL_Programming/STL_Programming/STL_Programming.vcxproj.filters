@@ -37,8 +37,26 @@
     <Filter Include="C++\05. class">
       <UniqueIdentifier>{c2475633-3c88-4ff3-a781-7b48476a30b5}</UniqueIdentifier>
     </Filter>
-    <Filter Include="C++\06. RAII">
+    <Filter Include="C++\12. RAII">
       <UniqueIdentifier>{a4c2dbd6-55ea-4f24-8ab4-6bdc1ea2e4b2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="C++\07. operator overloading">
+      <UniqueIdentifier>{53a66554-feeb-4412-94e7-888b6cb6a98c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="C++\06. interface">
+      <UniqueIdentifier>{4e2db641-6d32-4246-a02f-b852303caf96}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="C++\08. friend">
+      <UniqueIdentifier>{e39e382d-3761-47c3-92b3-10aa8cb0a177}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="C++\09. static">
+      <UniqueIdentifier>{de5e02e7-18ad-4efb-955e-3ed09c50c9eb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="C++\10. const">
+      <UniqueIdentifier>{0e7b2671-d412-4f8d-8475-2a13f039e3b8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="C++\11. template">
+      <UniqueIdentifier>{ad7a4aa1-b13e-4c65-9a09-c50dc072c37c}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -64,9 +82,6 @@
       <Filter>C++\03. new</Filter>
     </ClCompile>
     <ClCompile Include="01_malloc.cpp">
-      <Filter>C++\03. new</Filter>
-    </ClCompile>
-    <ClCompile Include="03_new\03_new_delete.cpp">
       <Filter>C++\03. new</Filter>
     </ClCompile>
     <ClCompile Include="04_new_struct.cpp">
@@ -106,16 +121,40 @@
       <Filter>C++\05. class</Filter>
     </ClCompile>
     <ClCompile Include="01_shallow_copy.cpp">
-      <Filter>C++\06. RAII</Filter>
+      <Filter>C++\12. RAII</Filter>
     </ClCompile>
     <ClCompile Include="02_deep_copy.cpp">
-      <Filter>C++\06. RAII</Filter>
+      <Filter>C++\12. RAII</Filter>
     </ClCompile>
     <ClCompile Include="03_RAII.cpp">
-      <Filter>C++\06. RAII</Filter>
+      <Filter>C++\12. RAII</Filter>
     </ClCompile>
     <ClCompile Include="05_specialMember.cpp">
       <Filter>C++\05. class</Filter>
+    </ClCompile>
+    <ClCompile Include="03_new_delete.cpp">
+      <Filter>C++\03. new</Filter>
+    </ClCompile>
+    <ClCompile Include="06_objectArray.cpp">
+      <Filter>C++\05. class</Filter>
+    </ClCompile>
+    <ClCompile Include="07_this.cpp">
+      <Filter>C++\05. class</Filter>
+    </ClCompile>
+    <ClCompile Include="01_const.cpp">
+      <Filter>C++\10. const</Filter>
+    </ClCompile>
+    <ClCompile Include="03_const_function.cpp">
+      <Filter>C++\10. const</Filter>
+    </ClCompile>
+    <ClCompile Include="02_const_ref_pointer.cpp">
+      <Filter>C++\10. const</Filter>
+    </ClCompile>
+    <ClCompile Include="04_const_member.cpp">
+      <Filter>C++\10. const</Filter>
+    </ClCompile>
+    <ClCompile Include="05_const_object.cpp">
+      <Filter>C++\10. const</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

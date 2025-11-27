@@ -29,10 +29,10 @@ public:
 		this->name = name;	this->score = score;
 	}
 
-	//// 정렬 기준은 '점수가 작은 순서' //연산자 오버로드 
-	//bool operator <(Student& student) {
-	//	return this->score < student.score;
-	//}
+	// 정렬 기준은 '점수가 작은 순서' //연산자 오버로드 
+	bool operator <(Student& student) {
+		return this->score < student.score;
+	}
 };
 
 bool compare(Student a, Student b) {
@@ -49,7 +49,7 @@ int main(void)
 		Student("태은", 97)
 	};
 
-	sort(students, students + 5, compare);		//sort 함수 // 정렬 방법 전달
+	sort(students, students + 5, Student);		//sort 함수 // 정렬 방법 전달
 
 	for (int i = 0; i < 5; i++) {
 		cout << students[i].name << ' ' << students[i].score << endl;
