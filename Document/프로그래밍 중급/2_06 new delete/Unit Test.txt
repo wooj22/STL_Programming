@@ -1,5 +1,0 @@
-단위 테스트
-https://learn.microsoft.com/en-us/visualstudio/test/unit-test-basics?view=vs-2022
-
-Visual Studio 2022에서 테스트 프로젝트 만들기
-https://learn.microsoft.com/en-us/visualstudio/test/writing-unit-tests-for-c-cpp?view=vs-2022

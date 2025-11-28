@@ -58,6 +58,60 @@
     <Filter Include="C++\06. virtual, abstract, interface">
       <UniqueIdentifier>{4e2db641-6d32-4246-a02f-b852303caf96}</UniqueIdentifier>
     </Filter>
+    <Filter Include="C++\13. file">
+      <UniqueIdentifier>{b1507afe-cba1-4ca2-9a42-8fd229b4a66c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="C++\14. string">
+      <UniqueIdentifier>{4661ad07-a87e-4858-8682-e92d89baf9b3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="C++\15. time">
+      <UniqueIdentifier>{ced7f9b8-d791-4cad-9d72-7e349c9c7ed7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="C++\16. math">
+      <UniqueIdentifier>{2df92b75-5089-4f39-b7b1-5e8bc216b723}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="C++\17. random">
+      <UniqueIdentifier>{16ef0823-0520-4793-8a3c-6cd28ab83d5f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="C++\18. key">
+      <UniqueIdentifier>{ecc2e030-01b1-4fb3-acb2-999384fa4920}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="STL\00. iterator">
+      <UniqueIdentifier>{1ae9c135-9b48-4281-b62b-eef5e8aac88e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="STL\01. container">
+      <UniqueIdentifier>{cd46c765-2e9d-46ea-88ea-f107481321f0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="STL\02. algorithm">
+      <UniqueIdentifier>{19275f9c-159e-40dd-9776-b2c1e8c2e4a9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="STL\03. functor">
+      <UniqueIdentifier>{9abe26af-089a-4797-8aed-8b005ad15300}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="STL\04. lambda">
+      <UniqueIdentifier>{52d82e6d-89e4-4013-a9b9-bf34bc491ee1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="STL\05. functional">
+      <UniqueIdentifier>{52d0d842-3a15-441e-b313-752350b88597}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="STL\06. type">
+      <UniqueIdentifier>{d210d11b-569e-45a5-aa06-92f834e57802}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="STL\07. smart pointer">
+      <UniqueIdentifier>{4788efb2-3164-4478-9ea0-8e3d571185b5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="STL\08. auto">
+      <UniqueIdentifier>{8347fdb9-a346-4281-84f8-f7d73b7f4afc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="STL\09. decltype">
+      <UniqueIdentifier>{14e7d722-0da1-4e5c-8a6b-b111ba1314bd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="STL\10. constexpr">
+      <UniqueIdentifier>{e98dc382-d364-4be9-b7db-09d65736cd16}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="STL\11. move, forward">
+      <UniqueIdentifier>{23c732e8-217e-4751-a5c5-ec48b3fd9535}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="01_namespace.cpp">
