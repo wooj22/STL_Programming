@@ -43,9 +43,6 @@
     <Filter Include="C++\07. operator overloading">
       <UniqueIdentifier>{53a66554-feeb-4412-94e7-888b6cb6a98c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="C++\06. interface">
-      <UniqueIdentifier>{4e2db641-6d32-4246-a02f-b852303caf96}</UniqueIdentifier>
-    </Filter>
     <Filter Include="C++\08. friend">
       <UniqueIdentifier>{e39e382d-3761-47c3-92b3-10aa8cb0a177}</UniqueIdentifier>
     </Filter>
@@ -57,6 +54,9 @@
     </Filter>
     <Filter Include="C++\11. template">
       <UniqueIdentifier>{ad7a4aa1-b13e-4c65-9a09-c50dc072c37c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="C++\06. virtual, abstract, interface">
+      <UniqueIdentifier>{4e2db641-6d32-4246-a02f-b852303caf96}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -191,6 +191,24 @@
     </ClCompile>
     <ClCompile Include="07_functor_sort.cpp">
       <Filter>C++\07. operator overloading</Filter>
+    </ClCompile>
+    <ClCompile Include="02_overriding.cpp">
+      <Filter>C++\06. virtual, abstract, interface</Filter>
+    </ClCompile>
+    <ClCompile Include="01_virtual.cpp">
+      <Filter>C++\06. virtual, abstract, interface</Filter>
+    </ClCompile>
+    <ClCompile Include="03_overriding_operator.cpp">
+      <Filter>C++\06. virtual, abstract, interface</Filter>
+    </ClCompile>
+    <ClCompile Include="04_abstract.cpp">
+      <Filter>C++\06. virtual, abstract, interface</Filter>
+    </ClCompile>
+    <ClCompile Include="05_interface.cpp">
+      <Filter>C++\06. virtual, abstract, interface</Filter>
+    </ClCompile>
+    <ClCompile Include="06_covariant_return_rule.cpp">
+      <Filter>C++\06. virtual, abstract, interface</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
