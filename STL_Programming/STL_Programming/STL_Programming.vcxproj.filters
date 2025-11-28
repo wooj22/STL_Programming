@@ -210,6 +210,36 @@
     <ClCompile Include="06_covariant_return_rule.cpp">
       <Filter>C++\06. virtual, abstract, interface</Filter>
     </ClCompile>
+    <ClCompile Include="01_template.cpp">
+      <Filter>C++\11. template</Filter>
+    </ClCompile>
+    <ClCompile Include="02_template_T_type.cpp">
+      <Filter>C++\11. template</Filter>
+    </ClCompile>
+    <ClCompile Include="03_template_specialization.cpp">
+      <Filter>C++\11. template</Filter>
+    </ClCompile>
+    <ClCompile Include="05_template_class.cpp">
+      <Filter>C++\11. template</Filter>
+    </ClCompile>
+    <ClCompile Include="04_template_overloading.cpp">
+      <Filter>C++\11. template</Filter>
+    </ClCompile>
+    <ClCompile Include="08_template_variable.cpp">
+      <Filter>C++\11. template</Filter>
+    </ClCompile>
+    <ClCompile Include="09_template_init.cpp">
+      <Filter>C++\11. template</Filter>
+    </ClCompile>
+    <ClCompile Include="10_template_static.cpp">
+      <Filter>C++\11. template</Filter>
+    </ClCompile>
+    <ClCompile Include="06_template_friend.cpp">
+      <Filter>C++\11. template</Filter>
+    </ClCompile>
+    <ClCompile Include="07_template_inheritance.cpp">
+      <Filter>C++\11. template</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="01_inline.h">
