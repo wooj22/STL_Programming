@@ -294,6 +294,9 @@
     <ClCompile Include="07_template_inheritance.cpp">
       <Filter>C++\11. template</Filter>
     </ClCompile>
+    <ClCompile Include="01_file.cpp">
+      <Filter>C++\13. file</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="01_inline.h">
